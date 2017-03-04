@@ -1,0 +1,212 @@
+@import url('css/reset.css');
+
+html {
+    box-sizing: border-box;
+}
+
+*,  *:after {
+    box-sizing: inherit;
+}
+
+/*--- Estilos Generales ---*/
+body {
+    background: #A7A7A7 url(img/bfondo.png) 0 0 repeat;
+    font-family: Lucida Sans, Arial, Helvetica, sans-serif;
+    height: 945px;
+}
+a {text-decoration:none; color:#fff;}
+a:hover {text-decoration:underline;}
+
+/*--- Barra de navegación: Sociales ---*/
+.social{
+    position:fixed;
+    left:-10px;
+    top:140px;
+    list-style: none;
+    padding: 0px;
+    z-index:9999;
+}
+.social ul{
+    list-style:none;
+}
+.social ul li a{
+    display:inline-block;
+    color: #fff;
+    background: #000;
+    padding: 10px 15px;
+    text-decoration: none;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;		
+}
+.social ul li .icon-facebook2{background: #24556c;}
+.social ul li .icon-play{background: #d22c46;}
+.social ul li .icon-bubble{background: #774c68;}
+.social ul li a:hover{
+    padding: 10px 50px;
+    background: #000;}
+
+.seccioncentral {
+    width: 960px;
+    min-height: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #CACACA url(img/bfondo1.png) 0 0 repeat;
+}
+
+/*--- HEADER ---*/
+header {
+    width:100%;
+    height: 150px;
+    float:left;
+    background: linear-gradient(to bottom,  #ffffff 0%,#e4e0e0 100%); /* W3C */
+    background: url(img/laPrusia7.jpg) no-repeat 0px;
+    box-shadow:0px 3px 5px #000;
+}
+
+/*--- MAIN ---*/
+#main {
+    width:100%;
+    margin:20px 0px 0px 0px;
+    float:left;
+}
+
+/*Menú*/
+nav {
+    background: #191919 url(img/bfondo.png) 0 0 repeat;
+    width: 100%;
+    margin-top:15px;
+    float: left;
+    text-decoration: none;
+} 
+nav ul {
+    list-style:none;
+    padding:0;
+    margin:0 194px;
+    overflow:hidden;
+}
+nav ul:after {
+    content: ""; clear: both; display: block;
+}
+nav > ul > li {
+    float:left;
+} 
+nav ul li a {
+    text-decoration:none;
+    color:#fff;
+    display:block;
+    padding:10px 20px;
+}
+nav ul li a:hover {
+    background:#fc7720;
+    text-decoration: none;
+    opacity: 1.0;
+    color: #000;
+}
+nav > ul > li:hover div {
+    display:table;
+    text-decoration: none;
+}
+
+/*Submenús*/
+.submenu{
+    width:210px;
+    position: absolute;
+    clear: both;
+    background:#ccc;
+    box-sizing:border-box;
+    display:none;
+} 
+nav ul li div ul{
+    width:20%;
+    display:table-cell;
+    border-right:1px solid rgba(255,255,255,.5);
+    box-sizing:border-box;
+} 
+nav ul li div ul:last-child {
+    border:none;
+} 
+nav ul li div ul .titulo {
+    background:#3a7390;
+    color:#fff;
+} 
+nav ul li div ul .titulo:hover {
+    background:#fe8130;
+    color:#000;
+    opacity: 1.0;
+} 
+nav ul li div ul .titulo a {
+    color:#fff;
+    padding:10px 20px;
+}
+nav ul li div ul .titulo a:hover {
+    background:none;
+    color: #000;
+}
+nav ul li div ul li a {
+    color:#000;
+} 
+nav ul li div ul li a:hover {
+    color:#000;
+}   
+
+/*Sección principal del documento*/
+article{
+    float: left;
+    border: 2.5px dashed #fc7720;
+    background: #EFEFEF url(img/bgfondo.jpg) 0 0 repeat;
+    width: 94%;
+    margin: 28px 25px 5px 25px;
+    margin-left: 28px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 4px;
+}
+figure{
+    text-align:center;
+    margin: 30px 5px 15px 0px;
+}
+.the_content > h1 {
+    font-size: 20px;
+    text-align: center;
+    border-top: 1px dashed #BBB;
+    border-bottom: 1px dashed #BBB;
+    padding: 10px;
+}
+article div p {
+    clear: both;
+    padding: 0px 15px;
+    text-align: justify;
+}
+article div p strong{
+    color: #A13E97;
+    font-weight: bold;
+}
+article div ul li {
+    padding: 0px 25px;
+    text-align: justify;
+    list-style: circle;
+}
+video{
+    margin-top: 10px;
+}
+
+/* Pie de página*/
+footer {
+    float: left;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    color: #fff;
+    margin-top: 24px;
+    padding: 15px 0;
+    background: url(img/bfondo.png) 0 0 repeat;
+}
+footer h1{
+    font-size:18px;
+    color: #fff;
+}
+
+.ajustar{
+    clear:both;
+} 

@@ -1,0 +1,188 @@
+/*--- Estilos Generales ---*/
+body {
+    background: #A7A7A7 url(img/bfondo.png) 0 0 repeat;
+    font-family: Lucida Sans, Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+a {text-decoration:none; color:#fff;}
+a:hover {text-decoration:underline;}
+
+.seccioncentral {
+    width: 960px;
+    height: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    background: #CACACA url(img/bfondo1.png) 0 0 repeat;
+}
+
+/*--- HEADER ---*/
+header {
+    width:100%;
+    height: 150px;
+    float:left;
+    background: linear-gradient(to bottom,  #ffffff 0%,#e4e0e0 100%); /* W3C */
+    background: url(img/laPrusia7.jpg) no-repeat 0px;
+    box-shadow:0px 3px 5px #000;
+}
+
+/*--- MAIN ---*/
+#main {
+    width:100%;
+    margin:20px 0px 0px 0px;
+    float:left;
+}
+
+/*Menú*/
+nav {
+    background: #191919 url(img/bfondo.png) 0 0 repeat;
+    width: 100%;
+    margin-top:15px;
+    float: left;
+    text-decoration: none;
+} 
+nav ul {
+    list-style:none;
+    padding:0;
+    margin:0 194px;
+    overflow:hidden;
+}
+nav ul:after {
+    content: ""; clear: both; display: block;
+}
+nav > ul > li {
+    float:left;
+} 
+nav ul li a {
+    text-decoration:none;
+    color:#fff;
+    display:block;
+    padding:10px 20px;
+}
+nav ul li a:hover {
+    background:#fc7720;
+    text-decoration: none;
+    opacity: 1.0;
+    color: #000;
+}
+nav > ul > li:hover div {
+    display:table;
+    text-decoration: none;
+}
+
+/*Submenús*/
+.submenu{
+    width:210px;
+    position: absolute;
+    clear: both;
+    background:#ccc;
+    box-sizing:border-box;
+    display:none;
+} 
+nav ul li div ul{
+    width:20%;
+    display:table-cell;
+    border-right:1px solid rgba(255,255,255,.5);
+    box-sizing:border-box;
+} 
+nav ul li div ul:last-child {
+    border:none;
+} 
+nav ul li div ul .titulo {
+    background:#3a7390;
+    color:#fff;
+} 
+nav ul li div ul .titulo:hover {
+    background:#fe8130;
+    color:#000;
+    opacity: 1.0;
+} 
+nav ul li div ul .titulo a {
+    color:#fff;
+    padding:10px 20px;
+}
+nav ul li div ul .titulo a:hover {
+    background:none;
+    color: #000;
+}
+nav ul li div ul li a {
+    color:#000;
+} 
+nav ul li div ul li a:hover {
+    color:#000;
+}
+
+/*Sección principal del documento*/
+form{
+    float: left;
+    border: 2.5px dashed #fc7720;
+    background: #EFEFEF url(img/bgfondo.jpg) 0 0 repeat;
+    width: 660px;
+    margin: 32px 145px 10px 145px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-radius: 4px;
+}
+form h1{
+    text-align: center;
+    color:#001;
+     background: url(img/bfondo1.png) 0 0 repeat;
+    font-weight: normal;
+    font-size: 30px;
+    padding: 10px;
+    margin-bottom: 25px;
+    margin-top: inherit;
+}
+form input, select{
+    width: 180px;
+    height: 25px;
+    padding: 0px 10px;
+    background-color: #EFEFEF;
+    color: #000;
+    text-align: center;
+    margin: 10px auto;
+    border: 2px solid #fc7720;
+    border-radius: 3px;
+}
+form button{
+    width: 160px;
+    height: 30px;
+    margin: 25px 1px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border: 0.5px solid #232323;
+    background: #000000 none repeat scroll 0% 0%;
+    color: #FFF;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    text-align: center;
+}
+form button:hover{
+    background: #fc7720;
+    border: 0.5px solid #FF7519;
+    color: #000;
+}
+form button:active{
+    background: #000;
+}
+
+/* Pie de página*/
+footer {
+    float: left;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    margin-top: 24px;
+    padding: 15px 0;
+    color: #fff;
+    background: url(img/bfondo.png) 0 0 repeat;
+    line-height: 9px;
+}
+footer h1{
+    font-size:17px;
+    color: #fff;
+}
+
+.ajustar{
+    clear:both;
+} 
