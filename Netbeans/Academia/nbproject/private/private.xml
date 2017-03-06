@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Julio/Desktop/Academia/src/java/datos/Ciclo.java</file>
-            <file>file:/C:/Users/Julio/Desktop/Academia/src/java/Informacion/CicloI.java</file>
-            <file>file:/C:/Users/Julio/Desktop/Academia/web/registrar_alumno.jsp</file>
-            <file>file:/C:/Users/Julio/Desktop/Academia/src/java/Servlet/Crear_Sede.java</file>
-            <file>file:/C:/Users/Julio/Desktop/Academia/web/registrar_ciclo.jsp</file>
-            <file>file:/C:/Users/Julio/Desktop/Academia/web/registrar_sede.jsp</file>
-            <file>file:/C:/Users/Julio/Desktop/Academia/src/java/Servlet/Crear_Ciclo.java</file>
-            <file>file:/C:/Users/Julio/Desktop/Academia/src/java/datos/Sede.java</file>
+            <file>file:/C:/Users/Julio/Desktop/Base%202014/academia/web/registrar_ciclo.jsp</file>
+            <file>file:/C:/Users/Julio/Desktop/Base%202014/academia/web/consultar_notas.jsp</file>
+            <file>file:/C:/Users/Julio/Desktop/Base%202014/academia/src/java/Servlet/Obs_Notas.java</file>
+            <file>file:/C:/Users/Julio/Desktop/Base%202014/academia/src/java/Model/dbconnection.xml</file>
         </group>
     </open-files>
 </project-private>

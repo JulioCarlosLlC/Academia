@@ -74,8 +74,8 @@ public final class menu_005fadmin_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                            <div class=\"submenu\">\n");
       out.write("                                <ul>\n");
       out.write("                                    <li class=\"titulo\"><a href=\"registrar_ciclo.jsp\">Ciclo</a></li>\n");
-      out.write("                                    li><a href=\"registrar_sede.jsp\">Sede</a></li>\n");
-      out.write("                                    <li><a href=\"registrar_alumno.jsp\">Alumnos</a></li>\n");
+      out.write("                                    <li><a href=\"registrar_sede.jsp\">Sede</a></li>\n");
+      out.write("                                    <li><a href=\"registrar_alumno.jsp\">Matricula</a></li>\n");
       out.write("                                    <li><a href=\"registrar_notas.jsp\">Notas</a></li>\n");
       out.write("                                </ul>\n");
       out.write("                            </div>\n");

@@ -52,7 +52,7 @@ public final class login_005fadmin_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("        <meta name=\"keywords\" content=\"academia\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"login_admin_style.css\"/>\n");
       out.write("        <link rel=\"stylesheet\" href=\"css/style_icon.css\"/>\n");
-      out.write("        <title>Login</title>\n");
+      out.write("        <title>Login</title> \n");
       out.write("        <script type=\"text/javascript\">\n");
       out.write("            <!-- \n");
       out.write("                function permite(elEvento, permitidos) {\n");
@@ -101,7 +101,7 @@ public final class login_005fadmin_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                document.getElementById('enviar').type=\"submit\";\n");
       out.write("            }\n");
       out.write("            function salirLogin() {\n");
-      out.write("                opener.location.href = 'index.jsp';\n");
+      out.write("                opener.location.href = 'index/index.html';\n");
       out.write("                window.close();\n");
       out.write("            }\n");
       out.write("        </script>\n");
@@ -114,12 +114,13 @@ public final class login_005fadmin_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("                <section>\n");
       out.write("                    <article>\n");
       out.write("                        <form id=\"campo\" action=\"Validar\" method=\"post\" name=\"formLogin\">\n");
-      out.write("                                                  \n");
+      out.write("                            <header><img src=\"img/avatar_2x.png\" alt=\"\"/></header>                        \n");
       out.write("                            <h1>Solo<br> personal autorizado</h1>\n");
-      out.write("                            <input type=\"text\" required onkeypress=\"return permite(event, 'num_car')\"  name=\"usuario\" maxlength=\"10\" placeholder=\"Escriba su código\"/><br>\n");
-      out.write("                            <input type=\"password\" required onkeypress=\"return permite(event, 'num_car')\"  name=\"contrasena\" maxlength=\"15\" placeholder=\"Escriba su contraseña\"/><br>\n");
-      out.write("                            <button type=\"button\" id=\"btnsalir\" name=\"btnsalir\" onclick=\"salirLogin()\" aria-hidden=\"true\" data-icon=\"&#xe93b;\">&nbsp;Regresar</button>\n");
-      out.write("                            <button type=\"button\" id=\"enviar\" name=\"enviar\" value=\"enviar\" onclick=\"entrarLogin()\" aria-hidden=\"true\" data-icon=\"&#xe946;\">&nbsp;Ingresar</button>\n");
+      out.write("                                <input type=\"text\" required onkeypress=\"return permite(event, 'num_car')\"  name=\"usuario\" maxlength=\"10\" placeholder=\"Escriba su código\"/><br>\n");
+      out.write("                                <input type=\"password\" required onkeypress=\"return permite(event, 'num_car')\"  name=\"contrasena\" maxlength=\"15\" placeholder=\"Escriba su contraseña\"/><br>\n");
+      out.write("                            \n");
+      out.write("                                <button type=\"button\" id=\"btnsalir\" name=\"btnsalir\" onclick=\"salirLogin()\" aria-hidden=\"true\" data-icon=\"&#xe93b;\">&nbsp;Regresar</button>\n");
+      out.write("                                <button type=\"button\" id=\"enviar\" name=\"enviar\" value=\"enviar\" onclick=\"entrarLogin()\" aria-hidden=\"true\" data-icon=\"&#xe946;\">&nbsp;Ingresar</button>\n");
       out.write("                        </form>\n");
       out.write("                    </article>\n");
       out.write("                </section>\n");

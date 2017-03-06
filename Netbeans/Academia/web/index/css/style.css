@@ -23,16 +23,24 @@ h3 {font-size:27px;color:#000;line-height:1.2em;padding:14px 0 13px 0;letter-spa
 p {padding-bottom:20px}
 /* header */
 header {height:376px;width:100%;overflow:hidden}
-#logo {display:block;background:url(../images/logo.png) no-repeat;width:273px;height:84px;text-indent:-9999px}
+#logo {display:block;background:url(../images/logo.png) no-repeat;width:500px;height:202px;text-indent:-9999px}
 #menu {float:left;padding:11px 0 0 39px}
 #menu li {float:left;padding-right:17px;background:url(../images/menu_line.jpg) right 0 no-repeat;margin-right:15px}
 #menu .end {background:none}
 #menu li a {display:block;font-size:15px;color:#fff;line-height:36px;text-transform:uppercase;text-decoration:none;height:40px}
 #menu li a:hover, #menu #menu_active a {color:#44fbfe}
-#icon {float:right;padding:16px 40px 0 0}
-#icon li {float:left;padding-left:15px}
+.login {
+  align-left: inherit;
+  padding: 11px 0 0 80px;
+
+}
+.login a{
+  background-color: red;
+}
+
 #icons {float:right;padding:20px 39px 0 0}
-#icons li {float:left;padding-left:11px}
+#icons li {float:left;padding-left:11px;
+background: red;}
 #slogan {background:url(../images/top_line2.gif) 0 0 no-repeat;font-size:46px;color:#002b3a;line-height:1.2em;margin:25px 0 0 39px;padding-top:18px;letter-spacing:-2px}
 #slogan span {display:block;font-size:36px;line-height:1.2em;margin-top:-12px}
 .banners {padding:26px 0 0 35px}

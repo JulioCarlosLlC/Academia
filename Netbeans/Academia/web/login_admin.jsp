@@ -9,7 +9,7 @@
         <meta name="keywords" content="academia">
         <link rel="stylesheet" href="login_admin_style.css"/>
         <link rel="stylesheet" href="css/style_icon.css"/>
-        <title>Login</title>
+        <title>Login</title> 
         <script type="text/javascript">
             <!-- 
                 function permite(elEvento, permitidos) {
@@ -58,7 +58,7 @@
                 document.getElementById('enviar').type="submit";
             }
             function salirLogin() {
-                opener.location.href = 'index.jsp';
+                opener.location.href = 'index/index.html';
                 window.close();
             }
         </script>
@@ -71,12 +71,13 @@
                 <section>
                     <article>
                         <form id="campo" action="Validar" method="post" name="formLogin">
-                                                  
+                            <header><img src="img/avatar_2x.png" alt=""/></header>                        
                             <h1>Solo<br> personal autorizado</h1>
-                            <input type="text" required onkeypress="return permite(event, 'num_car')"  name="usuario" maxlength="10" placeholder="Escriba su código"/><br>
-                            <input type="password" required onkeypress="return permite(event, 'num_car')"  name="contrasena" maxlength="15" placeholder="Escriba su contraseña"/><br>
-                            <button type="button" id="btnsalir" name="btnsalir" onclick="salirLogin()" aria-hidden="true" data-icon="&#xe93b;">&nbsp;Regresar</button>
-                            <button type="button" id="enviar" name="enviar" value="enviar" onclick="entrarLogin()" aria-hidden="true" data-icon="&#xe946;">&nbsp;Ingresar</button>
+                                <input type="text" required onkeypress="return permite(event, 'num_car')"  name="usuario" maxlength="10" placeholder="Escriba su código"/><br>
+                                <input type="password" required onkeypress="return permite(event, 'num_car')"  name="contrasena" maxlength="15" placeholder="Escriba su contraseña"/><br>
+                            
+                                <button type="button" id="btnsalir" name="btnsalir" onclick="salirLogin()" aria-hidden="true" data-icon="&#xe93b;">&nbsp;Regresar</button>
+                                <button type="button" id="enviar" name="enviar" value="enviar" onclick="entrarLogin()" aria-hidden="true" data-icon="&#xe946;">&nbsp;Ingresar</button>
                         </form>
                     </article>
                 </section>

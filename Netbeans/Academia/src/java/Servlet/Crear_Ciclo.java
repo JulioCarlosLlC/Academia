@@ -6,7 +6,7 @@
 package Servlet;
 
 
-import Info.Ciclo;
+import Modelo.Ciclo;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

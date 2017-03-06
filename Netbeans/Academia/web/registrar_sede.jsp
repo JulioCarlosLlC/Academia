@@ -66,8 +66,8 @@
                             <div class="submenu">
                                 <ul>
                                     <li class="titulo"><a href="registrar_ciclo.jsp">Ciclo</a></li>
-                                    <li><a href="registrar_alumno.jsp">Alumnos</a></li>
                                     <li><a href="registrar_sede.jsp">Sede</a></li>
+                                    <li><a href="registrar_alumno.jsp">Matricula</a></li>
                                     <li><a href="registrar_notas.jsp">Notas</a></li>
                                 </ul>
                             </div>

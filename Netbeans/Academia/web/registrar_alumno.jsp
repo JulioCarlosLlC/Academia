@@ -1,9 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.io.*,java.util.*,java.net.*,java.sql.*" %>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
+
 <%@page import="Info.*"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,9 +66,9 @@
                         <li><a aria-hidden="true" data-icon="&#xe915;" href="#">&nbsp;Registro</a>
                             <div class="submenu">
                                 <ul>
-                                    <li class="titulo"><a href="registrar_ciclo.jsp">Ciclo</a></li>
-                                    <li><a href="registrar_alumno.jsp">Alumnos</a></li>
+                                     <li class="titulo"><a href="registrar_ciclo.jsp">Ciclo</a></li>
                                     <li><a href="registrar_sede.jsp">Sede</a></li>
+                                    <li><a href="registrar_alumno.jsp">Matricula</a></li>
                                     <li><a href="registrar_notas.jsp">Notas</a></li>
                                 </ul>
                             </div>
@@ -101,21 +99,19 @@
                                 <%//SEDE%>
                                 <label><b>Sede:</b></label>
                                 <%
-                                    try {
-                                         Class.forName("com.mysql.jdbc.Driver");
-                                        Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/academia", "root", "");
-
-                                        Statement st = conexion.createStatement();
-                                        ResultSet rs = st.executeQuery("select * from sede");
+                                    try {                           
+                                        Connection conex =Info.Conexion.obtener();
+                                        PreparedStatement Consultar =conex.prepareStatement("CALL  usp_getListaSede();");
+                                        ResultSet li =Consultar.executeQuery();
                                 %>                            
                                 <select name="sede" required="" style="height: 25px; width: 195px;">
-                                <option></option>
-                                <%  while (rs.next()) {%> 
-                                <option><%=rs.getObject("NomSede")%>
+
+                                <%  while (li.next()) {%> 
+                                <option><%=li.getObject("NomSede")%></option>
                                 <%}%>
                                 </select><br>
                                 <%
-                                    conexion.close();
+                                   Info.Conexion.obtener();
                                     } catch (Exception e) {
                                     }
                                 %>
@@ -124,21 +120,18 @@
                                 <%//CICLO%>
                                 <label><b>Ciclo:</b></label>
                                 <%
-                                    try {
-                                         Class.forName("com.mysql.jdbc.Driver");
-                                        Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/academia", "root", "");
-
-                                        Statement st = conexion.createStatement();
-                                        ResultSet rs = st.executeQuery("select * from ciclo");
+                                    try {                           
+                                        Connection conex =Info.Conexion.obtener();
+                                        PreparedStatement Consultar =conex.prepareStatement("CALL  usp_getListaCiclo();");
+                                        ResultSet lis =Consultar.executeQuery();
                                 %>                            
                                 <select name="ciclo" required="" style="height: 25px; width: 195px;">
-                                <option></option>
-                                <%  while (rs.next()) {%> 
-                                <option><%=rs.getObject("NombCiclo")%>
+                                <%  while (lis.next()) {%> 
+                                <option><%=lis.getString("NomCiclo")%></option>
                                 <%}%>
                             </select><br>
                                 <%
-                                    conexion.close();
+                                    Info.Conexion.cerrar();
                                     } catch (Exception e) {
                                     }
                                 %>
@@ -148,55 +141,11 @@
                                 <input type="text" required onkeypress="return permite(event, 'car')"  name="Turno" style="width: 260px; height: 22px;" value="" maxlength="30"><br>
 
                                 
-                            <button type="button" name="volver" value="Regresar" onclick="location.href = 'menu_admin.jsp'" aria-hidden="true" data-icon="&#xe93b;">&nbsp;Consultar</button>
-                                
+                            <button type="button" name="volver" value="Regresar" onclick="location.href = 'menu_admin.jsp'" aria-hidden="true" data-icon="&#xe93b;">&nbsp;Consultar</button>           
                             <button type="submit" name="ok" value="Guardar" aria-hidden="true" data-icon="&#xe938;">&nbsp;Guardar</button>
                             <button type="reset" value="Cancelar" aria-hidden="true" data-icon="&#xe956;">&nbsp;Cancelar</button>
                             <button type="button" name="volver" value="Regresar" onclick="location.href = 'menu_admin.jsp'" aria-hidden="true" data-icon="&#xe93b;">&nbsp;Regresar</button>
                         </form>
-                        <%
-                            Connection canal = null;
-                            Statement instruccion = null;
-                            try {
-                                Class.forName("com.mysql.jdbc.Driver").newInstance();
-                                canal = DriverManager.getConnection("jdbc:mysql://localhost:3306/academia","root","");
-                                instruccion = canal.createStatement();
-                            } catch (SQLException e) {};
-                            
-                            try{
-                            if (request.getParameter("ok") != null) {
-                                String codigo = request.getParameter("codigo");
-                                String nombre = request.getParameter("nombre");
-                                String apellidos = request.getParameter("apellidos");;
-                                
-                                try {
-                                    ResultSet rs = instruccion.executeQuery("SELECT *FROM alumno");
-                                    while (rs.next()) {
-                                        String codigoexistente = rs.getString(1);
-                                        String cicloexistente = rs.getString(2);
-                                        if (codigo.equals(codigoexistente) && codigo.equals(cicloexistente)) {%>
-                                            <script type="text/javascript">alert("YA SE ENCUENTRA REGISTRADO");</script>
-                                        <%  
-                                        };
-                                    }
-                                } catch (Exception e) {  out.println("1"+e.getMessage()); }
-                                String q = "INSERT INTO alumno  values('" +codigo + "','" + nombre + "','" + apellidos + "')";
-                                try {
-                                    instruccion.executeUpdate(q);
-                              
-                            %>                         
-                             <p id="negrita">REGISTRO REALIZADO</p>
-                            <%  
-                                } catch (SQLException e) {  out.println("2"+e.getMessage()); };
-                                
-                                try {
-                                    instruccion.close();
-                                    canal.close();
-                                } catch (SQLException e) {
-                                };
-                            };
-                            } catch (Exception e) { out.println("5"+e.getMessage()); };
-                        %>
                     </article>
                 </section>
                 <footer>

@@ -1,17 +1,17 @@
 /*--- Estilos Generales ---*/
 body {
-    background: #A7A7A7 url(img/bfondo.png) 0 0 repeat;
+    background: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
     font-family: Lucida Sans, Arial, Helvetica, sans-serif;
     margin: 0px;
     padding: 0px;
 }
 
 .seccioncentral {
+    background: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
     width: 520px;
     height: 645px;
     margin-left: auto;
     margin-right: auto;
-    background: #CACACA url(img/bfondo1.png) 0 0 repeat;
 }
 
 /*--- MAIN ---*/

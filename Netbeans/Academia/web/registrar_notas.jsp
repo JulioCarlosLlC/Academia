@@ -66,8 +66,8 @@
                             <div class="submenu">
                                 <ul>
                                     <li class="titulo"><a href="registrar_ciclo.jsp">Ciclo</a></li>
-                                    <li><a href="registrar_alumno.jsp">Alumnos</a></li>
                                     <li><a href="registrar_sede.jsp">Sede</a></li>
+                                    <li><a href="registrar_alumno.jsp">Matricula</a></li>
                                     <li><a href="registrar_notas.jsp">Notas</a></li>
                                 </ul>
                             </div>
@@ -85,58 +85,87 @@
                 </nav>
                 <section>
                     <article>
-                        <form id="form1" name="form1" method="post" action="registrar_ciclo.jsp">
+                        <form id="form1" name="form1" method="post" action="Crear_Nota">
                             <h1>Registrar Notas</h1>      
                         <label><b>Código del Alumno:</b></label> 
                             <input type="text"  required onkeypress="return permite(event, 'num')"  name="codigo" style="width: 140px; height: 22px;" value="" maxlength="10"><br>                            
-                            <label><b>Tipo:</b></label> <select name="sede" size="1" style="width: 100px;" required="">
-                                <option selected>semanal</option>                                        
-                                <option>Mensual</option>    
-                                <option>Simulacro</option>    
-                            </select>&nbsp;                            
-                            <label><b>Nota:</b></label> <select name="ciclo" size="1" style="width: 100px;" required="">
+                           
+                            <label><b>Nota Semanal:</b></label> <select name="Nota1" size="1" style="width: 100px;" required="">
                                 <option selected>00</option>                                        
                                 <option>01</option>    
                                 <option>02</option>    
                                 <option>03</option> 
                                 <option>04</option>
-                                 <option>05</option>    
+                                <option>05</option>    
                                 <option>06</option>    
                                 <option>07</option> 
                                 <option>08</option>
-                                 <option>09</option>    
+                                <option>09</option>    
                                 <option>10</option>    
                                 <option>11</option> 
                                 <option>12</option>
-                                 <option>13</option>    
+                                <option>13</option>    
                                 <option>14</option>    
                                 <option>15</option> 
                                 <option>16</option>
-                                 <option>17</option>    
+                                <option>17</option>    
                                 <option>18</option>    
                                 <option>19</option> 
                                 <option>20</option>
-                            </select>&nbsp;                           
+                            </select>&nbsp;  
                             
-                           
+                            <label><b>Nota Mensual:</b></label> <select name="Nota2" size="1" style="width: 100px;" required="">
+                                <option selected>00</option>                                        
+                                <option>01</option>    
+                                <option>02</option>    
+                                <option>03</option> 
+                                <option>04</option>
+                                <option>05</option>    
+                                <option>06</option>    
+                                <option>07</option> 
+                                <option>08</option>
+                                <option>09</option>    
+                                <option>10</option>    
+                                <option>11</option> 
+                                <option>12</option>
+                                <option>13</option>    
+                                <option>14</option>    
+                                <option>15</option> 
+                                <option>16</option>
+                                <option>17</option>    
+                                <option>18</option>    
+                                <option>19</option> 
+                                <option>20</option>
+                            </select>&nbsp; 
                             
+                            <label><b>Nota Simulacro:</b></label> <select name="Nota3" size="1" style="width: 100px;" required="">
+                                <option selected>00</option>                                        
+                                <option>01</option>    
+                                <option>02</option>    
+                                <option>03</option> 
+                                <option>04</option>
+                                <option>05</option>    
+                                <option>06</option>    
+                                <option>07</option> 
+                                <option>08</option>
+                                <option>09</option>    
+                                <option>10</option>    
+                                <option>11</option> 
+                                <option>12</option>
+                                <option>13</option>    
+                                <option>14</option>    
+                                <option>15</option> 
+                                <option>16</option>
+                                <option>17</option>    
+                                <option>18</option>    
+                                <option>19</option> 
+                                <option>20</option>
+                            </select>&nbsp; 
                             
-
                             <button type="submit" name="ok" value="Guardar" aria-hidden="true" data-icon="&#xe938;">&nbsp;Guardar</button>
                             <button type="reset" value="Cancelar" aria-hidden="true" data-icon="&#xe956;">&nbsp;Cancelar</button>
                             <button type="button" name="volver" value="Regresar" onclick="location.href = 'menu_admin.jsp'" aria-hidden="true" data-icon="&#xe93b;">&nbsp;Regresar</button>
                         </form>
-                        <%
-                            Connection canal = null;
-                            Statement instruccion = null;
-                            try {
-                                Class.forName("com.mysql.jdbc.Driver").newInstance();
-                                canal = DriverManager.getConnection("jdbc:mysql://localhost/unfv", "root", "localhost");
-                                instruccion = canal.createStatement();
-                            } catch (SQLException e) { /* out.println(e.getMessage()); */ };
-
-                           
-                        %>
                     </article>
                 </section>
                 <footer>

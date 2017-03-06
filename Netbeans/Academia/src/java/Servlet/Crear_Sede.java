@@ -5,8 +5,8 @@
  */
 package Servlet;
 
-import Info.Ciclo;
-import Info.Sede;
+import Modelo.Ciclo;
+import Modelo.Sede;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;

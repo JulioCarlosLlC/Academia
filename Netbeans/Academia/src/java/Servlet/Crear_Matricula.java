@@ -5,13 +5,15 @@
  */
 package Servlet;
 
-import Info.Matricula;
+import Modelo.Matricula;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -20,15 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Crear_Matricula", urlPatterns = {"/Crear_Matricula"})
 public class Crear_Matricula extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -37,9 +30,11 @@ public class Crear_Matricula extends HttpServlet {
         String apellido = request.getParameter("apellido");
         String sede = request.getParameter("sede");
         String ciclo = request.getParameter("ciclo");
-        String turno = request.getParameter("turno");
+        String turno = request.getParameter("Turno");
+        
         Matricula objMatricula = new Matricula();
-        if(objMatricula.GetRegistrarMatricula(codigomatricula.trim(),nombre.trim(),apellido.trim(),sede.trim(),ciclo.trim(),turno.trim())) {
+        if(objMatricula.GetRegistrarMatricula(codigomatricula,nombre,apellido,sede,ciclo,turno)) 
+        {
             String redirectURL="registrar_alumno.jsp";
             response.sendRedirect(redirectURL);
         }else{

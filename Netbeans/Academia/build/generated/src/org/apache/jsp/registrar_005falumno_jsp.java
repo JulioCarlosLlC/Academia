@@ -3,14 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import java.io.*;
-import java.util.*;
-import java.net.*;
-import java.sql.*;
-import java.sql.ResultSet;
-import java.sql.PreparedStatement;
 import Info.*;
-import java.sql.Connection;
+import java.sql.*;
 
 public final class registrar_005falumno_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -49,8 +43,6 @@ public final class registrar_005falumno_jsp extends org.apache.jasper.runtime.Ht
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -119,9 +111,9 @@ public final class registrar_005falumno_jsp extends org.apache.jasper.runtime.Ht
       out.write("                        <li><a aria-hidden=\"true\" data-icon=\"&#xe915;\" href=\"#\">&nbsp;Registro</a>\n");
       out.write("                            <div class=\"submenu\">\n");
       out.write("                                <ul>\n");
-      out.write("                                    <li class=\"titulo\"><a href=\"registrar_ciclo.jsp\">Ciclo</a></li>\n");
-      out.write("                                    <li><a href=\"registrar_alumno.jsp\">Alumnos</a></li>\n");
+      out.write("                                     <li class=\"titulo\"><a href=\"registrar_ciclo.jsp\">Ciclo</a></li>\n");
       out.write("                                    <li><a href=\"registrar_sede.jsp\">Sede</a></li>\n");
+      out.write("                                    <li><a href=\"registrar_alumno.jsp\">Matricula</a></li>\n");
       out.write("                                    <li><a href=\"registrar_notas.jsp\">Notas</a></li>\n");
       out.write("                                </ul>\n");
       out.write("                            </div>\n");
@@ -155,29 +147,27 @@ public final class registrar_005falumno_jsp extends org.apache.jasper.runtime.Ht
       out.write("                                <label><b>Sede:</b></label>\n");
       out.write("                                ");
 
-                                    try {
-                                         Class.forName("com.mysql.jdbc.Driver");
-                                        Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/academia", "root", "");
-
-                                        Statement st = conexion.createStatement();
-                                        ResultSet rs = st.executeQuery("select * from sede");
+                                    try {                           
+                                        Connection conex =Info.Conexion.obtener();
+                                        PreparedStatement Consultar =conex.prepareStatement("CALL  usp_getListaSede();");
+                                        ResultSet li =Consultar.executeQuery();
                                 
       out.write("                            \n");
       out.write("                                <select name=\"sede\" required=\"\" style=\"height: 25px; width: 195px;\">\n");
-      out.write("                                <option></option>\n");
+      out.write("\n");
       out.write("                                ");
-  while (rs.next()) {
+  while (li.next()) {
       out.write(" \n");
       out.write("                                <option>");
-      out.print(rs.getObject("NomSede"));
-      out.write("\n");
+      out.print(li.getObject("NomSede"));
+      out.write("</option>\n");
       out.write("                                ");
 }
       out.write("\n");
       out.write("                                </select><br>\n");
       out.write("                                ");
 
-                                    conexion.close();
+                                   Info.Conexion.obtener();
                                     } catch (Exception e) {
                                     }
                                 
@@ -192,29 +182,26 @@ public final class registrar_005falumno_jsp extends org.apache.jasper.runtime.Ht
       out.write("                                <label><b>Ciclo:</b></label>\n");
       out.write("                                ");
 
-                                    try {
-                                         Class.forName("com.mysql.jdbc.Driver");
-                                        Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/academia", "root", "");
-
-                                        Statement st = conexion.createStatement();
-                                        ResultSet rs = st.executeQuery("select * from ciclo");
+                                    try {                           
+                                        Connection conex =Info.Conexion.obtener();
+                                        PreparedStatement Consultar =conex.prepareStatement("CALL  usp_getListaCiclo();");
+                                        ResultSet lis =Consultar.executeQuery();
                                 
       out.write("                            \n");
       out.write("                                <select name=\"ciclo\" required=\"\" style=\"height: 25px; width: 195px;\">\n");
-      out.write("                                <option></option>\n");
       out.write("                                ");
-  while (rs.next()) {
+  while (lis.next()) {
       out.write(" \n");
       out.write("                                <option>");
-      out.print(rs.getObject("NombCiclo"));
-      out.write("\n");
+      out.print(lis.getString("NomCiclo"));
+      out.write("</option>\n");
       out.write("                                ");
 }
       out.write("\n");
       out.write("                            </select><br>\n");
       out.write("                                ");
 
-                                    conexion.close();
+                                    Info.Conexion.cerrar();
                                     } catch (Exception e) {
                                     }
                                 
@@ -227,61 +214,11 @@ public final class registrar_005falumno_jsp extends org.apache.jasper.runtime.Ht
       out.write("                                <input type=\"text\" required onkeypress=\"return permite(event, 'car')\"  name=\"Turno\" style=\"width: 260px; height: 22px;\" value=\"\" maxlength=\"30\"><br>\n");
       out.write("\n");
       out.write("                                \n");
-      out.write("                            <button type=\"button\" name=\"volver\" value=\"Regresar\" onclick=\"location.href = 'menu_admin.jsp'\" aria-hidden=\"true\" data-icon=\"&#xe93b;\">&nbsp;Consultar</button>\n");
-      out.write("                                \n");
+      out.write("                            <button type=\"button\" name=\"volver\" value=\"Regresar\" onclick=\"location.href = 'menu_admin.jsp'\" aria-hidden=\"true\" data-icon=\"&#xe93b;\">&nbsp;Consultar</button>           \n");
       out.write("                            <button type=\"submit\" name=\"ok\" value=\"Guardar\" aria-hidden=\"true\" data-icon=\"&#xe938;\">&nbsp;Guardar</button>\n");
       out.write("                            <button type=\"reset\" value=\"Cancelar\" aria-hidden=\"true\" data-icon=\"&#xe956;\">&nbsp;Cancelar</button>\n");
       out.write("                            <button type=\"button\" name=\"volver\" value=\"Regresar\" onclick=\"location.href = 'menu_admin.jsp'\" aria-hidden=\"true\" data-icon=\"&#xe93b;\">&nbsp;Regresar</button>\n");
       out.write("                        </form>\n");
-      out.write("                        ");
-
-                            Connection canal = null;
-                            Statement instruccion = null;
-                            try {
-                                Class.forName("com.mysql.jdbc.Driver").newInstance();
-                                canal = DriverManager.getConnection("jdbc:mysql://localhost:3306/academia","root","");
-                                instruccion = canal.createStatement();
-                            } catch (SQLException e) {};
-                            
-                            try{
-                            if (request.getParameter("ok") != null) {
-                                String codigo = request.getParameter("codigo");
-                                String nombre = request.getParameter("nombre");
-                                String apellidos = request.getParameter("apellidos");;
-                                
-                                try {
-                                    ResultSet rs = instruccion.executeQuery("SELECT *FROM alumno");
-                                    while (rs.next()) {
-                                        String codigoexistente = rs.getString(1);
-                                        String cicloexistente = rs.getString(2);
-                                        if (codigo.equals(codigoexistente) && codigo.equals(cicloexistente)) {
-      out.write("\n");
-      out.write("                                            <script type=\"text/javascript\">alert(\"YA SE ENCUENTRA REGISTRADO\");</script>\n");
-      out.write("                                        ");
-  
-                                        };
-                                    }
-                                } catch (Exception e) {  out.println("1"+e.getMessage()); }
-                                String q = "INSERT INTO alumno  values('" +codigo + "','" + nombre + "','" + apellidos + "')";
-                                try {
-                                    instruccion.executeUpdate(q);
-                              
-                            
-      out.write("                         \n");
-      out.write("                             <p id=\"negrita\">REGISTRO REALIZADO</p>\n");
-      out.write("                            ");
-  
-                                } catch (SQLException e) {  out.println("2"+e.getMessage()); };
-                                
-                                try {
-                                    instruccion.close();
-                                    canal.close();
-                                } catch (SQLException e) {
-                                };
-                            };
-                            } catch (Exception e) { out.println("5"+e.getMessage()); };
-                        
-      out.write("\n");
       out.write("                    </article>\n");
       out.write("                </section>\n");
       out.write("                <footer>\n");
