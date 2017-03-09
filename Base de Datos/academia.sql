@@ -3,7 +3,6 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-03-2017 a las 02:23:51
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -39,6 +38,11 @@ BEGIN
 	SELECT *FROM matricula;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_getListaNotas` ()  NO SQL
+BEGIN
+	SELECT * FROM notas;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_getListaSede` ()  NO SQL
 begin
 	select * from sede;
@@ -51,12 +55,12 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_getRegistrarAlumno` (IN `_codigo` VARCHAR(10), IN `_nombre` VARCHAR(20), IN `_apellido` VARCHAR(40))  NO SQL
 BEGIN
-	INSERT INTO alumno (codigo,nombre,apellidos) VALUES (_codigo,_nombre_apellido);
+	INSERT INTO alumno (codigo,nombre,apellidos) VALUES (_codigo,_nombre,_apellido);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_getRegistrarCiclo` (IN `_codigo_ciclo` VARCHAR(10), IN `_nombre_ciclo` VARCHAR(10))  NO SQL
 BEGIN
-	INSERT INTO ciclo (IdCiclo,NombCiclo) VALUES (_codigo_ciclo,_nombre_ciclo);
+	INSERT INTO ciclo (IdCiclo,NomCiclo) VALUES (_codigo_ciclo,_nombre_ciclo);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_getRegistrarLogin` (IN `_codigo_alumno` VARCHAR(10), IN `_nombre` VARCHAR(40), IN `_clave` VARCHAR(32))  NO SQL
@@ -66,12 +70,13 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_getRegistrarMatricula` (IN `_cod_matricula` VARCHAR(10), IN `_cod_alumno` VARCHAR(10), IN `_idsede` VARCHAR(10), IN `_idciclo` VARCHAR(10), IN `_turno` VARCHAR(2))  NO SQL
 BEGIN
-	INSERT INTO matricula (codMatricula,codAlumno,IdSede,IdCiclo,turno) VALUES (_codigo_matricula,_cod_alumno,_idsede,_idciclo,_turno);
+
+    INSERT INTO matricula (codMatricula,codAlumno,IdSede,IdCiclo,turno) VALUES (_cod_matricula,_cod_alumno,_idsede,_idciclo,_turno);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_getRegistrarNotas` (IN `_codigo` VARCHAR(10), IN `_esemanal` FLOAT, IN `_emensual` FLOAT, IN `_esimulacro` FLOAT)  NO SQL
 BEGIN
-	INSERT INTO alumno (codAlum,semanal,mensual,simulacro) VALUES (_codigo,_esemanal,_emensual,_esimulacro);
+	INSERT INTO notas (codAlum,semanal,mensual,simulacro) VALUES (_codigo,_esemanal,_emensual,_esimulacro);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `usp_getRegistrarSede` (IN `_codigo_sede` VARCHAR(10), IN `_nombre_sede` VARCHAR(20))  NO SQL
@@ -99,12 +104,10 @@ CREATE TABLE `alumno` (
 
 INSERT INTO `alumno` (`codigo`, `nombre`, `apellidos`) VALUES
 ('2017', 'kevin', 'dgdg'),
+('2017324', 'jhghfg', 'ghfghfgh'),
 ('205', 'julio carlos', 'llactahuaman cuadros'),
 ('208', 'kevin', 'molina vera'),
-('245', 'richard', 'navarro vega'),
-('288', 'juan', 'charles'),
-('785', 'carlos', '2'),
-('9999', 'kilo', 'fff');
+('288', 'juan', 'charles');
 
 -- --------------------------------------------------------
 
@@ -114,14 +117,14 @@ INSERT INTO `alumno` (`codigo`, `nombre`, `apellidos`) VALUES
 
 CREATE TABLE `ciclo` (
   `IdCiclo` varchar(10) CHARACTER SET utf8 NOT NULL,
-  `NombCiclo` varchar(10) CHARACTER SET utf8 NOT NULL
+  `NomCiclo` varchar(10) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ciclo`
 --
 
-INSERT INTO `ciclo` (`IdCiclo`, `NombCiclo`) VALUES
+INSERT INTO `ciclo` (`IdCiclo`, `NomCiclo`) VALUES
 ('124', 'integral'),
 ('174', 'anual'),
 ('178', 'verano');
@@ -144,7 +147,8 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`codigo`, `usuario`, `clave`) VALUES
 ('205', '206', 'julio'),
-('208', '209', 'krvin');
+('208', '209', 'krvin'),
+('205', 'julio', 'cacadda');
 
 -- --------------------------------------------------------
 
@@ -160,6 +164,14 @@ CREATE TABLE `matricula` (
   `turno` varchar(2) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `matricula`
+--
+
+INSERT INTO `matricula` (`codMatricula`, `codAlumno`, `IdSede`, `IdCiclo`, `turno`) VALUES
+('154', '205', '14', '124', 't'),
+('24', '208', '14', '174', 'm');
+
 -- --------------------------------------------------------
 
 --
@@ -172,6 +184,16 @@ CREATE TABLE `notas` (
   `mensual` float NOT NULL,
   `simulacro` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `notas`
+--
+
+INSERT INTO `notas` (`codAlum`, `semanal`, `mensual`, `simulacro`) VALUES
+('2017', 21, 25, 21),
+('205', 11, 12, 14),
+('208', 12, 14, 12),
+('288', 14, 12, 11);
 
 -- --------------------------------------------------------
 
@@ -190,7 +212,8 @@ CREATE TABLE `sede` (
 
 INSERT INTO `sede` (`IdSede`, `NomSede`) VALUES
 ('14', 'los olivos'),
-('20', 'santa anita');
+('20', 'santa anita'),
+('744', 'sdadd');
 
 --
 -- Índices para tablas volcadas
