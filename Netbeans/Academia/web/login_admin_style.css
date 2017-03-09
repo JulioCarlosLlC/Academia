@@ -33,8 +33,8 @@ body {
 
 /*Sección principal del documento*/
 form{
-    border: 2.5px dashed #FF7519;
-    background: #EFEFEF url(img/bgfondo.jpg) 0 0 repeat;
+    /*border: 2.5px dashed #FF7519;*/
+    /*background: #EFEFEF url(img/bgfondo.jpg) 0 0 repeat;*/
     width: 360px;
     margin: 30px auto;
     text-align: center;
@@ -48,7 +48,6 @@ form header{
 form h1{
     text-align: center;
     color:#001;
-    background: url(img/bfondo1.png) 0 0 repeat;
     font-weight: normal;
     font-size: 30pt;
     margin: 10px 0px 20px 0px;

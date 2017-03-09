@@ -1,0 +1,332 @@
+@import url('css/reset.css');
+
+html {
+    box-sizing: border-box;
+}
+
+*,  *:after {
+    box-sizing: inherit;
+}
+:focus { outline:0; }
+a:active { outline:none; }
+
+/*--- Estilos Generales ---*/
+body {
+    background: #3DA6D2 ;
+    font-family: Lucida Sans, Arial, Helvetica, sans-serif;
+
+}
+a {text-decoration:none; color:#fff;}
+a:hover {text-decoration:underline;}
+
+/*--- Barra de navegación: Sociales ---*/
+.social{
+    position:fixed;
+    left:-10px;
+    top:140px;
+    list-style: none;
+    padding: 0px;
+    z-index:9999;
+}
+.social ul{
+    list-style:none;
+}
+.social ul li a{
+    display:inline-block;
+    color: #fff;
+    background: #000;
+    padding: 10px 15px;
+    text-decoration: none;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;		
+}
+.social ul li .icon-facebook2{background: #24556c;}
+.social ul li .icon-play{background: #d22c46;}
+.social ul li .icon-envelop{background: #774c68;}
+.social ul li a:hover{
+    padding: 10px 50px;
+    background: #000;}
+
+/*--- Barra de navegación: Anexos ---*/
+.anexos{
+    position:absolute;
+    right:150px;
+    top:23.5px;
+    margin: 0px;
+    padding: 0px;
+    z-index:2000;
+    transition: left 0.3s;
+}
+.anexos ul{
+    list-style:none;
+    padding: 5px auto;
+}
+.anexos ul li a{
+    display:inline-block;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-transform: inherit;
+    transition: all 500ms ease;
+}
+.anexos ul li .icon-key{background: #111110;}
+.anexos ul li a:hover{
+    padding: 10px 15px;
+    background: #eca728;}
+
+.seccioncentral {
+    width: 960px;
+    height: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*--- HEADER ---*/
+header {
+    width:90%;
+    height: 270px;
+    float:left;
+    margin-left: 50px;
+    background: linear-gradient(to bottom,  #ffffff 0%,#e4e0e0 100%); /* W3C */
+    background: url(img/banner.jpg) no-repeat 0px;
+    box-shadow:0px 5px 5px #000;
+}
+
+/*Slideshow*/
+#container {
+    width:580px;
+    padding: 10px 0px;
+    margin:0 auto 15px;
+    position:relative;
+    z-index:0;
+}
+#example {
+    width:600px;
+    height:305px;
+    position:relative;
+}
+#frame {
+    position:absolute;
+    z-index:0;
+    width:739px;
+    height:341px;
+    top:-3px;
+    left:-80px;
+}
+#slides {
+    position:absolute;
+    top:15px;
+    left:4px;
+    z-index:100;
+}
+/* Slides container*/
+/*      Important:
+        Set the width of your slides container
+        Set to display none, prevents content flash
+*/
+.slides_container {
+    width:570px;
+    overflow:hidden;
+    position:relative;
+    display:none;
+}
+/*
+        Each slide
+        Important:
+        Set the width of your slides
+        If height not specified height will be set by the slide content
+        Set to display block
+*/
+.slides_container div.slide {
+    width:570px;
+    height:270px;
+    display:block;
+}
+/* Next/prev buttons*/
+#slides .next,#slides .prev {
+    position:absolute;
+    top:107px;
+    left:-39px;
+    width:24px;
+    height:43px;
+    display:block;
+    z-index:101;
+}
+#slides .next {
+    left:585px;
+}
+
+/* Pagination */
+.pagination {
+    margin:26px auto 0;
+    width:100px;
+}
+.pagination li {
+    float:left;
+    margin:0 1px;
+    list-style:none;
+}
+.pagination li a {
+    display:block;
+    width:12px;
+    height:0;
+    padding-top:12px;
+    background-position:0 0;
+    float:left;
+    overflow:hidden;
+}
+.pagination li.current a {
+    background-position:0 -12px;
+}
+
+/*--- MAIN ---*/
+#main {
+    width:100%;
+    margin:20px 0px 0px 0px;
+    float:left;
+}
+
+/*Menú*/
+nav {
+    background: #191919 url(img/bfondo.jgp) 0 0 repeat;
+    width: 90%;
+    float: left;
+    margin-left: 50px;
+    text-decoration: none;
+} 
+nav ul {
+    list-style:none;
+    padding:0;
+    margin:0 85px;
+    overflow:hidden;
+}
+nav ul:after {
+    content: ""; clear: both; display: block;
+}
+nav > ul > li {
+    float:left;
+} 
+nav ul li a {
+    text-decoration:none;
+    color:#fff;
+    display:block;
+    padding:10px 20px;
+}
+nav ul li a:hover {
+    background:#fc7720;
+    text-decoration: none;
+    opacity: 1.0;
+    color: #000;
+}
+nav > ul > li:hover div {
+    display:table;
+    text-decoration: none;
+}
+
+/*Submenús*/
+.submenu{
+    width:210px;
+    position: absolute;
+    clear: both;
+    background:#ccc;
+    box-sizing:border-box;
+    display:none;
+} 
+nav ul li div ul{
+    width:20%;
+    display:table-cell;
+    border-right:1px solid rgba(255,255,255,.5);
+    box-sizing:border-box;
+} 
+nav ul li div ul:last-child {
+    border:none;
+} 
+nav ul li div ul .titulo {
+    background:#3a7390;
+    color:#fff;
+} 
+nav ul li div ul .titulo:hover {
+    background:#fe8130;
+    color:#000;
+    opacity: 1.0;
+} 
+nav ul li div ul .titulo a {
+    color:#fff;
+    padding:10px 20px;
+}
+nav ul li div ul .titulo a:hover {
+    background:none;
+    color: #000;
+}
+nav ul li div ul li a {
+    color:#000;
+} 
+nav ul li div ul li a:hover {
+    color:#000;
+}
+
+/*Sección principal del documento*/
+article{
+    float: left;
+    /* border: 2.5px dashed #fe8130;*/
+    /*background: #EFEFEF url(img/bgfondo.jpg) 0 0 repeat;*/
+    width: 94%;
+    margin: 28px 25px 5px 25px;
+    margin-left: 28px;
+    text-align: center;
+    padding-bottom: 20px;
+    border-radius: 4px;
+}
+figure{
+    text-align:center;
+    margin: 30px 5px 15px 0px;
+}
+.the_content > h1 {
+    font-size: 20px;
+    text-align: center;
+    border-top: 1px dashed #BBB;
+    border-bottom: 1px dashed #BBB;
+    padding: 10px;
+    font-weight: bolder;
+}
+article div p {
+    clear: both;
+    padding: 0px 15px;
+    text-align: justify;
+    font-weight: 300;
+}
+article div p strong{
+    color: #524a71;
+    font-weight: bold;
+}
+article div ul li {
+    padding: 0px 25px;
+    text-align: justify;
+    list-style: circle;
+    font-weight: 300;
+}
+
+/* Pie de página*/
+footer {
+    float: left;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    color: #fff;
+    margin-top: 24px;
+    padding: 15px 0;
+    background: url(img/bfondo.jgp) 0 0 repeat;
+}
+footer h1{
+    font-size:18px;
+    color: #fff;
+}
+
+
+/*Twitter*/
+
+#twit{
+    float: left;
+    width: 40%;
+    margin-left: 50px
+}

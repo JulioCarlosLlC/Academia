@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Servlet;
 
 import Modelo.Matricula;
@@ -12,13 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 
-
-/**
- *
- * @author Julio
- */
 @WebServlet(name = "Crear_Matricula", urlPatterns = {"/Crear_Matricula"})
 public class Crear_Matricula extends HttpServlet {
 

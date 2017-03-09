@@ -1,6 +1,42 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="java.io.*,java.util.*,java.net.*,java.sql.*" %>
 
+<%@page import="java.sql.*"%>
+<%@page import="Modelo.Conexion"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    Boolean validado = (Boolean) session.getAttribute("validado");
+    if (validado == null || !validado.booleanValue()) {
+        String usuario = request.getParameter("usuario");
+        String Clave = request.getParameter("contrasena");
+        if (usuario != null && Clave != null && !usuario.equals("")) {
+            session.setAttribute("usuario", usuario);
+             Connection conex =Conexion.obtener();
+                PreparedStatement Consultar =conex.prepareStatement("CALL usp_getLogin(?);");
+                Consultar.setString(1, usuario);
+                ResultSet Resultado =Consultar.executeQuery();
+                while (Resultado.next()) {                
+                    if(Resultado.getString("clave").equals(Clave)){
+                        validado = new Boolean(true);
+                    }
+                }
+        }
+    }
+// Si la variable de sesión
+// 'validado' no ha sido creada
+    if (validado == null) // Establecemos la variable local
+    // 'validado' a true
+    {
+        validado = new Boolean(false);
+    }
+// Añadimos la variable de sesión 'validado'
+// con el contenido de la variable local
+    session.setAttribute("validado", validado);
+// Si la variable local 'validado' es false
+    if (!validado.booleanValue()) // Redireccionamos a la página login.jsp
+    {
+        response.sendRedirect("login_admin.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>

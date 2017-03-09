@@ -1,5 +1,26 @@
+<%@page import="Modelo.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*,java.net.*,java.sql.*" %>
+<%
+    Boolean validado = (Boolean) session.getAttribute("validado");
+// Si la variable de sesión
+// 'validado' no ha sido creada
+    if (validado == null) // Establecemos la variable local
+    // 'validado' a true
+    {
+        validado = new Boolean(false);
+    }
+// Añadimos la variable de sesión 'validado'
+// con el contenido de la variable local
+    session.setAttribute("validado", validado);
+// Si la variable local 'validado' es false
+    if (!validado.booleanValue()) // Redireccionamos a la página login.jsp
+    {
+        response.sendRedirect("login_admin.jsp");
+    }
+%>
+
+
 
 <!DOCTYPE html>
 <html>

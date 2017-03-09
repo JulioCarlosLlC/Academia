@@ -1,7 +1,24 @@
+<%@page import="Modelo.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<%@page import="Info.*"%>
 <%@page import="java.sql.*"%>
+<%
+    Boolean validado = (Boolean) session.getAttribute("validado");
+// Si la variable de sesión
+// 'validado' no ha sido creada
+    if (validado == null) // Establecemos la variable local
+    // 'validado' a true
+    {
+        validado = new Boolean(false);
+    }
+// Añadimos la variable de sesión 'validado'
+// con el contenido de la variable local
+    session.setAttribute("validado", validado);
+// Si la variable local 'validado' es false
+    if (!validado.booleanValue()) // Redireccionamos a la página login.jsp
+    {
+        response.sendRedirect("login_admin.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,6 +28,10 @@
         <link rel="stylesheet" href="submenu_admin_style.css"/>
         <link rel="stylesheet" href="css/style_icon.css"/>
         <title>REGISTRAR MATRICULA</title>
+        
+        
+        
+        
         <script type="text/javascript">
             <!-- 
       function permite(elEvento, permitidos) {
@@ -100,7 +121,7 @@
                                 <label><b>Sede:</b></label>
                                 <%
                                     try {                           
-                                        Connection conex =Info.Conexion.obtener();
+                                        Connection conex =Conexion.obtener();
                                         PreparedStatement Consultar =conex.prepareStatement("CALL  usp_getListaSede();");
                                         ResultSet li =Consultar.executeQuery();
                                 %>                            
@@ -111,7 +132,7 @@
                                 <%}%>
                                 </select><br>
                                 <%
-                                   Info.Conexion.obtener();
+                                  Conexion.obtener();
                                     } catch (Exception e) {
                                     }
                                 %>
@@ -121,7 +142,7 @@
                                 <label><b>Ciclo:</b></label>
                                 <%
                                     try {                           
-                                        Connection conex =Info.Conexion.obtener();
+                                        Connection conex =Conexion.obtener();
                                         PreparedStatement Consultar =conex.prepareStatement("CALL  usp_getListaCiclo();");
                                         ResultSet lis =Consultar.executeQuery();
                                 %>                            
@@ -131,7 +152,7 @@
                                 <%}%>
                             </select><br>
                                 <%
-                                    Info.Conexion.cerrar();
+                                    Conexion.Cerrar();
                                     } catch (Exception e) {
                                     }
                                 %>

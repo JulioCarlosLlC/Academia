@@ -10,7 +10,6 @@ public class Usuario {
         
         try {
             if (Usuario != null && Clave != null && !Usuario.equals("")){
-                    JOptionPane.showMessageDialog(null," usuario "+Conexion.obtener());
                 Connection conex =Conexion.obtener();
                 PreparedStatement Consultar =conex.prepareStatement("CALL usp_getLogin(?);");
                 Consultar.setString(1, Usuario);

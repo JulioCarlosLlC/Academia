@@ -1,18 +1,41 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+// Leemos la variable de sessión 'validado'
+    Boolean validado = (Boolean) session.getAttribute("validado");
+// Si la variable de session 'valiadado' ya ha sido creada o el valor es 'true'
+    if (validado != null && validado.booleanValue()) // Redireccionamos a la página bienvenido.jsp
+    {
+        response.sendRedirect("menu_admin.jsp");
+    }
+    // Leemos la variable de sesión 'usuario'
+    String usuario = (String) session.getAttribute("usuario");
+    // Si las variable de sesión 'validado' y 'usuario' ya habia sido creadadas
+    if (validado != null && usuario != null) // Mostramos mensaje de advertencia
+    {
+        out.println("<p>Usuario o contraseña incorrectos</p>");
+    }
+    // Si la variable de sesión usuario no ha sido creada
+    if (usuario == null) // Instanciamos la variable local 'usuario'
+    {
+        usuario = "";
+    }
+    // Borramos la variable de sesión 'usuario'
+    session.setAttribute("usuario", null);
 
+%>
 
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <meta name="description" content="Pagina web de la Academia">
-        <meta name="keywords" content="academia">
+        <meta name="description" content="Pagina web de la Universidad Nacional Federico Villarreal">
+        <meta name="keywords" content="UNFV, Federico Villarreal">
         <link rel="stylesheet" href="login_admin_style.css"/>
         <link rel="stylesheet" href="css/style_icon.css"/>
-        <title>Login</title> 
+        <title>Login</title>
         <script type="text/javascript">
             <!-- 
-                function permite(elEvento, permitidos) {
+      function permite(elEvento, permitidos) {
                 // Variables que definen los caracteres permitidos
                 var numeros = "0123456789";
                 var caracteres = " abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
@@ -46,7 +69,8 @@
                         tecla_especial = true;
                         break;
                     }
-                
+                }
+
                 // Comprobar si la tecla pulsada se encuentra en los caracteres permitidos
                 // o si es una tecla especial
                 return permitidos.indexOf(caracter) != -1 || tecla_especial;
@@ -58,7 +82,7 @@
                 document.getElementById('enviar').type="submit";
             }
             function salirLogin() {
-                opener.location.href = 'index/index.html';
+                opener.location.href = 'index.jsp';
                 window.close();
             }
         </script>
@@ -70,14 +94,13 @@
                 <nav></nav>
                 <section>
                     <article>
-                        <form id="campo" action="Validar" method="post" name="formLogin">
-                            <header><img src="img/avatar_2x.png" alt=""/></header>                        
+                        <form id="campo" action="menu_admin.jsp" method="post" name="formLogin">
+                            <header><img src="img/logo_unfvv.png" alt=""/></header>                        
                             <h1>Solo<br> personal autorizado</h1>
-                                <input type="text" required onkeypress="return permite(event, 'num_car')"  name="usuario" maxlength="10" placeholder="Escriba su código"/><br>
-                                <input type="password" required onkeypress="return permite(event, 'num_car')"  name="contrasena" maxlength="15" placeholder="Escriba su contraseña"/><br>
-                            
-                                <button type="button" id="btnsalir" name="btnsalir" onclick="salirLogin()" aria-hidden="true" data-icon="&#xe93b;">&nbsp;Regresar</button>
-                                <button type="button" id="enviar" name="enviar" value="enviar" onclick="entrarLogin()" aria-hidden="true" data-icon="&#xe946;">&nbsp;Ingresar</button>
+                            <input type="text" required onkeypress="return permite(event, 'num_car')"  name="usuario" maxlength="10" placeholder="Escriba su usuario"/><br>
+                            <input type="password" required onkeypress="return permite(event, 'num_car')"  name="contrasena" maxlength="15" placeholder="Escriba su contraseña"/><br>
+                            <button type="button" id="btnsalir" name="btnsalir" onclick="salirLogin()" aria-hidden="true" data-icon="&#xe93b;">&nbsp;Regresar</button>
+                            <button type="button" id="enviar" name="enviar" value="enviar" onclick="entrarLogin()" aria-hidden="true" data-icon="&#xe946;">&nbsp;Ingresar</button>
                         </form>
                     </article>
                 </section>
